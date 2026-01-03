@@ -43,7 +43,7 @@ void foo(...) {
 
 ## Setup:
 
-- ### Docker:
+- ### Docker (**optional**):
     * Use dockerfile found in repository. It installs all the necessary
     libraries, and some useful programs (e.g. vim, gdb). 
     * build image: `docker build -t temp-safety-blks-img .`
