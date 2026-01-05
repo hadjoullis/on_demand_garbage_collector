@@ -1,9 +1,10 @@
 # on_demand_garbage_collector
 - Achieving temporal safety blocks in C. Essentially creating an on demand
-conservative garbage collector, which aims to defend against Use-After-Free
-bugs. The idea, is that since most **UAF** bugs occur inside code that handles
-user input, we can apply the overhead of a garbage collector to only that
-portion of code, thus, not affecting the rest of the program 
+conservative garbage collector (simple _mark & sweep_), which aims to
+defend against Use-After-Free bugs. The idea, is that since most **UAF**
+bugs occur inside code that handles user input, we can apply the overhead
+of a garbage collector to only that portion of code, thus, not affecting
+the rest of the program 
 - A program can be in two states:
     * temporal unsafety
     * temporal safety
@@ -13,6 +14,7 @@ redirected to the isolated 'safe' heap
 mode. This heap isolation is achieved via [Intel Memory Protection
 Keys](https://www.kernel.org/doc/html/latest/core-api/protection-keys.html),
 which is a fast method to change the permissions of memory in **user space**
+- Currently only supports single-threaded programs
 
 ## Concept:
 - Developers can wrap code regions that are most critical in Safe Blocks
